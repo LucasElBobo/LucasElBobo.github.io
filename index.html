@@ -5,32 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Warframe Hub</title>
   <style>
+    /* Basic Styling */
     body {
       font-family: Arial, sans-serif;
       color: #fafafa;
       background-color: #0f0f0f;
-      text-align: center;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
     header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       background-color: #1c1c1c;
       padding: 20px;
     }
+    header img {
+      width: 50px;
+      height: auto;
+    }
     header h1 {
       color: #39b2c4;
+      font-size: 2rem;
+      margin: 0;
     }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+    nav a {
+      color: #39b2c4;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 8px 15px;
+      border-radius: 5px;
+      background-color: #2c2c2c;
+      transition: background-color 0.3s;
+    }
+    nav a:hover {
+      background-color: #39b2c4;
+      color: #1c1c1c;
+    }
+
+    /* Section Styling */
     section {
       padding: 20px;
     }
     .link-box {
       background-color: #2c2c2c;
       border-radius: 10px;
-      margin: 10px auto;
+      margin: 20px auto;
       padding: 15px;
       width: 80%;
       max-width: 600px;
       color: #ffffff;
+    }
+    .link-box h2 {
+      color: #39b2c4;
+      font-size: 1.5rem;
     }
     a {
       color: #39b2c4;
@@ -39,28 +72,42 @@
     a:hover {
       text-decoration: underline;
     }
+
+    /* Spotify Embed Styling */
+    .spotify-widget {
+      margin-top: 15px;
+      border: 2px solid #39b2c4;
+      border-radius: 10px;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Header with Nav and Icon -->
   <header>
-    <h1>Welcome to My Warframe Hub</h1>
-    <p>Your go-to spot for Warframe guides, builds, and more!</p>
+    <img src="your-icon-url.png" alt="Warframe Hub Logo">
+    <h1>My Warframe Hub</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="builds.html">Builds</a>
+      <a href="https://discord.com/users/yourdiscord" target="_blank">Discord</a>
+    </nav>
   </header>
 
+  <!-- Content Sections -->
   <section>
     <div class="link-box">
       <h2>Useful Warframe Links</h2>
       <p><a href="https://warframe.fandom.com/" target="_blank">Warframe Wiki</a></p>
       <p><a href="https://hub.warframestat.us/" target="_blank">Warframe Timers</a></p>
       <p><a href="https://overframe.gg/" target="_blank">Warframe Builds</a></p>
-      <p><a href="https://wfpedia.com/" target="_blank">Speedrun/Advanced Farm and Builds</a></p>
+      <p><a href="https://wfpedia.com/" target="_blank">Advanced Farming & Builds</a></p>
       <p><a href="https://discord.gg/vqhRp2MWqr" target="_blank">Warframe Discord Community</a></p>
     </div>
 
     <div class="link-box">
       <h2>My Warframe Builds</h2>
-      <p>Check out my <a href="https://lucaselbobo.github.io/builds.html" target="_blank">favorite builds</a> for different Warframes and weapons.</p>
+      <p>Check out my <a href="builds.html">favorite builds</a> for different Warframes and weapons.</p>
     </div>
 
     <div class="link-box">
@@ -70,7 +117,7 @@
 
     <div class="link-box">
       <h2>Spotify Playlist</h2>
-      <iframe src="https://open.spotify.com/playlist/5xXqCvvy7szKrVtqeXOLie?si=Md6_dsi6RMiW-MDbQ6nlTw" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+      <iframe src="https://open.spotify.com/embed/playlist/5xXqCvvy7szKrVtqeXOLie?utm_source=generator" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="spotify-widget"></iframe>
       <p><a href="https://open.spotify.com/user/31cdl442njdufgj73qd6v27a2wmu" target="_blank">Follow me on Spotify</a></p>
     </div>
   </section>
