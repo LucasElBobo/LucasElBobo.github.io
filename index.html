@@ -13,6 +13,7 @@
       margin: 0;
       padding: 0;
       text-align: center;
+      overflow-x: hidden;
     }
     header {
       display: flex;
@@ -20,10 +21,15 @@
       justify-content: space-between;
       background-color: #1c1c1c;
       padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     }
     header img {
       width: 50px;
       height: auto;
+      transition: transform 0.3s ease;
+    }
+    header img:hover {
+      transform: scale(1.1);
     }
     header h1 {
       color: #39b2c4;
@@ -41,11 +47,14 @@
       padding: 8px 15px;
       border-radius: 5px;
       background-color: #2c2c2c;
-      transition: background-color 0.3s;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
     nav a:hover {
       background-color: #39b2c4;
       color: #1c1c1c;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
     /* Section Styling */
@@ -60,6 +69,10 @@
       width: 80%;
       max-width: 600px;
       color: #ffffff;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+      animation-delay: 0.2s;
     }
     .link-box h2 {
       color: #39b2c4;
@@ -68,9 +81,11 @@
     a {
       color: #39b2c4;
       text-decoration: none;
+      transition: color 0.3s;
     }
     a:hover {
       text-decoration: underline;
+      color: #67d4e2;
     }
 
     /* Spotify Embed Styling */
@@ -78,6 +93,22 @@
       margin-top: 15px;
       border: 2px solid #39b2c4;
       border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .spotify-widget:hover {
+      transform: scale(1.02);
+    }
+
+    /* Fade-in Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -85,12 +116,12 @@
 
   <!-- Header with Nav and Icon -->
   <header>
-    <img src="your-icon-url.png" alt="Warframe Hub Logo">
-    <h1>My Warframe Hub</h1>
+    <img src="Media/logo.jpg" alt="Warframe Hub Logo">
+    <h1>Lucas's Warframe Hub</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="builds.html">Builds</a>
-      <a href="https://discord.com/users/yourdiscord" target="_blank">Discord</a>
+      <a href="https://discord.com/users/680521696943538186" target="_blank">Discord</a>
     </nav>
   </header>
 

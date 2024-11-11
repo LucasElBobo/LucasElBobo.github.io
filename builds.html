@@ -20,10 +20,33 @@
       background-color: #1c1c1c;
       padding: 15px;
     }
+    header img {
+      width: 50px;
+      margin-right: 10px;
+    }
     header h1 {
       color: #39b2c4;
       font-size: 2rem;
       margin: 0;
+    }
+    nav {
+      display: flex;
+      gap: 15px;
+      margin-left: auto;
+    }
+    nav a {
+      color: #39b2c4;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 8px 15px;
+      border-radius: 5px;
+      background-color: #2c2c2c;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+    nav a:hover {
+      background-color: #39b2c4;
+      color: #1c1c1c;
     }
     .build-box {
       background-color: #2c2c2c;
@@ -52,8 +75,15 @@
 </head>
 <body>
 
+  <!-- Header with Nav and Icon -->
   <header>
-    <h1>My Warframe Builds</h1>
+    <img src="Media\logo.jpg" alt="Warframe Hub Logo">
+    <h1>My Builds</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="builds.html">Refresh</a>
+      <a href="https://discord.com/users/680521696943538186" target="_blank">Discord</a>
+    </nav>
   </header>
 
   <div class="build-box">
