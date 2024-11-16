@@ -1,0 +1,17 @@
+/* Keep the existing CSS below, and feel free to customize as needed. 
+The key colors and styles should match the look and feel of your new template. */
+
+/* Background Gradient */
+.container-login100 {
+    background: linear-gradient(-135deg, #c850c0, #4158d0);
+}
+
+/* Button hover effect changed to a color that matches the overall theme */
+.login100-form-btn:hover {
+    background: #333333;
+}
+
+/* You may customize button and text sizes further for better look */
+.login100-form-title {
+    color: #333333; /* You can change to match your style */
+}
