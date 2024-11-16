@@ -3,26 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Things Display</title>
+    <title>Random Things Gallery</title>
     <style>
         body { font-family: Arial, sans-serif; }
-        #gallery { display: flex; flex-wrap: wrap; }
+        #gallery { display: flex; flex-wrap: wrap; margin-top: 20px; }
         .photo { margin: 10px; }
         img { max-width: 150px; max-height: 150px; }
+        .commentary { max-width: 150px; }
     </style>
 </head>
 <body>
 
 <h1>Random Things Gallery</h1>
 
-<input type="file" id="fileInput" accept="image/*" multiple>
+<div id="login-form">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button id="login-btn">Login</button>
+</div>
+
+<div id="upload-section" style="display: none;">
+    <h2>Upload Image</h2>
+    <input type="text" id="image-title" placeholder="Title">
+    <textarea id="image-commentary" placeholder="Commentary"></textarea>
+    <input type="file" id="fileInput" accept="image/*">
+    <button id="upload-btn">Upload</button>
+</div>
+
 <div id="gallery"></div>
 
 <script>
-    document.getElementById('fileInput').addEventListener('change', function(event) {
-        const files = event.target.files;
-        const gallery = document.getElementById('gallery');
-        
+    let isLoggedIn = false;
+
+    // Simple login simulation
+    document.getElementById('login-btn').addEventListener('click', function() {
+        // For demo purposes, we just simulate a successful login
+        isLoggedIn = true;
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('upload-section').style.display = 'block';
+    });
+
+    // Image upload
+    document.getElementById('upload-btn').addEventListener('click', function() {
+        if (!isLoggedIn) {
+            alert('Please log in first.');
+            return;
+        }
+
+        const title = document.getElementById('image-title').value;
+        const commentary = document.getElementById('image-commentary').value;
+        const fileInput = document.getElementById('fileInput');
+        const files = fileInput.files;
+
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const reader = new FileReader();
@@ -32,8 +65,23 @@
                 img.src = e.target.result;
                 const photoDiv = document.createElement('div');
                 photoDiv.className = 'photo';
+                
+                const titleEl = document.createElement('h3');
+                titleEl.innerText = title;
+
+                const commentEl = document.createElement('p');
+                commentEl.className = 'commentary';
+                commentEl.innerText = commentary;
+
                 photoDiv.appendChild(img);
-                gallery.appendChild(photoDiv);
+                photoDiv.appendChild(titleEl);
+                photoDiv.appendChild(commentEl);
+                document.getElementById('gallery').appendChild(photoDiv);
+
+                // Clear inputs after upload
+                document.getElementById('image-title').value = '';
+                document.getElementById('image-commentary').value = '';
+                fileInput.value = '';
             };
             reader.readAsDataURL(file);
         }
