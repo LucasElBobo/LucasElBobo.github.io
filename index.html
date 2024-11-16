@@ -143,6 +143,10 @@
         $('.js-tilt').tilt({
             scale: 1.1
         });
+
+        require('dotenv').config();
+        const apiKey = process.env.GOOGLE_API_KEY;
+        console.log(apiKey);
     </script>
 </body>
 </html>
