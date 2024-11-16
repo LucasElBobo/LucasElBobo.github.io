@@ -1,157 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Warframe Hub</title>
-  <style>
-    /* Basic Styling */
-    body {
-      font-family: Arial, sans-serif;
-      color: #fafafa;
-      background-color: #0f0f0f;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      overflow-x: hidden;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: #1c1c1c;
-      padding: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    }
-    header img {
-      width: 50px;
-      height: auto;
-      transition: transform 0.3s ease;
-    }
-    header img:hover {
-      transform: scale(1.1);
-    }
-    header h1 {
-      color: #39b2c4;
-      font-size: 2rem;
-      margin: 0;
-    }
-    nav {
-      display: flex;
-      gap: 15px;
-    }
-    nav a {
-      color: #39b2c4;
-      text-decoration: none;
-      font-size: 1rem;
-      padding: 8px 15px;
-      border-radius: 5px;
-      background-color: #2c2c2c;
-      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
-    nav a:hover {
-      background-color: #39b2c4;
-      color: #1c1c1c;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Section Styling */
-    section {
-      padding: 20px;
-    }
-    .link-box {
-      background-color: #2c2c2c;
-      border-radius: 10px;
-      margin: 20px auto;
-      padding: 15px;
-      width: 80%;
-      max-width: 600px;
-      color: #ffffff;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 0.6s ease forwards;
-      animation-delay: 0.2s;
-    }
-    .link-box h2 {
-      color: #39b2c4;
-      font-size: 1.5rem;
-    }
-    a {
-      color: #39b2c4;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    a:hover {
-      text-decoration: underline;
-      color: #67d4e2;
-    }
-
-    /* Spotify Embed Styling */
-    .spotify-widget {
-      margin-top: 15px;
-      border: 2px solid #39b2c4;
-      border-radius: 10px;
-      transition: transform 0.3s;
-    }
-    .spotify-widget:hover {
-      transform: scale(1.02);
-    }
-
-    /* Fade-in Animation */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Things Display</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        #gallery { display: flex; flex-wrap: wrap; }
+        .photo { margin: 10px; }
+        img { max-width: 150px; max-height: 150px; }
+    </style>
 </head>
 <body>
 
-  <!-- Header with Nav and Icon -->
-  <header>
-    <img src="Media/logo.jpg" alt="Warframe Hub Logo">
-    <h1>Lucas's Warframe Hub</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="builds.html">Builds</a>
-      <a href="https://discord.com/users/680521696943538186" target="_blank">Discord</a>
-    </nav>
-  </header>
+<h1>Random Things Gallery</h1>
 
-  <!-- Content Sections -->
-  <section>
-    <div class="link-box">
-      <h2>Useful Warframe Links</h2>
-      <p><a href="https://warframe.fandom.com/" target="_blank">Warframe Wiki</a></p>
-      <p><a href="https://hub.warframestat.us/" target="_blank">Warframe Timers</a></p>
-      <p><a href="https://overframe.gg/" target="_blank">Warframe Builds</a></p>
-      <p><a href="https://wfpedia.com/" target="_blank">Advanced Farming & Builds</a></p>
-      <p><a href="https://discord.gg/vqhRp2MWqr" target="_blank">Warframe Discord Community</a></p>
-    </div>
+<input type="file" id="fileInput" accept="image/*" multiple>
+<div id="gallery"></div>
 
-    <div class="link-box">
-      <h2>My Warframe Builds</h2>
-      <p>Check out my <a href="builds.html">favorite builds</a> for different Warframes and weapons.</p>
-    </div>
-
-    <div class="link-box">
-      <h2>Connect with Me</h2>
-      <p>Discord: <strong>lucass.22</strong></p>
-    </div>
-
-    <div class="link-box">
-      <h2>Spotify Playlist</h2>
-      <iframe src="https://open.spotify.com/embed/playlist/5xXqCvvy7szKrVtqeXOLie?utm_source=generator" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media" class="spotify-widget"></iframe>
-      <p><a href="https://open.spotify.com/user/31cdl442njdufgj73qd6v27a2wmu" target="_blank">Follow me on Spotify</a></p>
-    </div>
-  </section>
+<script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const files = event.target.files;
+        const gallery = document.getElementById('gallery');
+        
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                const photoDiv = document.createElement('div');
+                photoDiv.className = 'photo';
+                photoDiv.appendChild(img);
+                gallery.appendChild(photoDiv);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>
 
 </body>
 </html>
